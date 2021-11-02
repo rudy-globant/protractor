@@ -10,7 +10,7 @@ exports.config = {
             'browserName': 'MicrosoftEdge',
         }
     ],
-    seleniumAddress: 'http://localhost:4444/wd/hub',
+    seleniumAddress: 'http://d04562e7a6e8:4444/wd/hub',
     specs: ['./**/*.spec.js'],
     framework: 'jasmine2',
     onPrepare: function () {
