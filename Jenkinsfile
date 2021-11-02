@@ -1,19 +1,26 @@
 pipeline {
     agent none
     stages {
-        stage('build') {
+        stage('setup') {
+            agent any
+            steps {
+               sh 'docker-compose up -d'
+               sh 'docker ps'
+            }
+        }
+        stage('test') {
             agent {
                 docker { image 'node' }
             }
             steps {
-               sh 'node -v'
-               sh 'npm i && npm start'
+                sh 'npm i && npm start'
             }
         }
-        stage('deploy') {
+        stage('tearDown') {
             agent any
             steps {
-               sh 'echo "deploy...."'
+                sh 'docker-compose down'
+                sh 'docker ps'
             }
         }
     }
