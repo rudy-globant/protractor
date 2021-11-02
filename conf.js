@@ -10,7 +10,7 @@ exports.config = {
             'browserName': 'MicrosoftEdge',
         }
     ],
-    seleniumAddress: 'http://host.docker.internal:4444/wd/hub',
+    seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
     specs: ['./**/*.spec.js'],
     framework: 'jasmine2',
     onPrepare: function () {
