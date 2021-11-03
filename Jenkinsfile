@@ -4,6 +4,8 @@ pipeline {
         stage('setup') {
             agent any
             steps {
+               //replacing HUB_HOST
+               sh 'sed -i "s/localhost/172.17.0.1/g" .env'
                sh 'docker-compose up -d'
                sh 'docker ps'
             }
