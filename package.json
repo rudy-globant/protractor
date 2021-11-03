@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "protractor": "7.0.0",
-    "protractor-jasmine2-html-reporter": "0.0.7"
+    "protractor-jasmine2-html-reporter": "0.0.7",
+    "dotenv": "10.0.0"
   }
 }

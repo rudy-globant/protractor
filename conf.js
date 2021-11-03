@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 exports.config = {
     multiCapabilities: [
         {
@@ -10,7 +12,7 @@ exports.config = {
             'browserName': 'MicrosoftEdge',
         }
     ],
-    seleniumAddress: 'http://172.17.0.1:4444/wd/hub',
+    seleniumAddress: 'http://' + (process.env.HUB_HOST || 'localhost') +':4444/wd/hub',
     specs: ['./**/*.spec.js'],
     framework: 'jasmine2',
     onPrepare: function () {
