@@ -22,8 +22,7 @@ pipeline {
     }
     post {
         always {
-            sh 'docker-compose down'
-            sh 'docker ps'
+            sh 'docker-compose down && docker ps'
         }
     }
 }
