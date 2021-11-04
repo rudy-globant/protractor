@@ -14,7 +14,7 @@ pipeline {
                 }
             }
             steps {
-                //replacing HUB_HOST abc
+                //replacing HUB_HOST
                 sh 'sed -i "s/localhost/172.17.0.1/g" .env'
                 sh 'npm i && npm start'
             }
