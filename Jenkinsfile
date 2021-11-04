@@ -1,8 +1,7 @@
 pipeline {
-    agent none
+    agent any
     stages {
         stage('setup') {
-            agent any
             steps {
                sh 'docker-compose up -d'
                sh 'docker ps'
@@ -10,7 +9,9 @@ pipeline {
         }
         stage('test') {
             agent {
-                docker { image 'node' }
+                docker {
+                    image 'node:14-alpine'
+                }
             }
             steps {
                 //replacing HUB_HOST
@@ -18,12 +19,11 @@ pipeline {
                 sh 'npm i && npm start'
             }
         }
-        stage('tearDown') {
-            agent any
-            steps {
-                sh 'docker-compose down'
-                sh 'docker ps'
-            }
+    }
+    post {
+        always {
+            sh 'docker-compose down'
+            sh 'docker ps'
         }
     }
 }
